@@ -11,6 +11,7 @@ const Button = (props) => {
                 props.onButtonClick('hello')
             }}
             style={{...props.style, backgroundColor: props.bgColor}}
+            type={props.type}
         >
             { props.children }
         </button>
@@ -20,8 +21,14 @@ const Button = (props) => {
 Button.propTypes={
     children: PropTypes.any.isRequired,
     onButtonClick: PropTypes.func.isRequired,
-    bgColor: PropTypes.string,
-    style: PropTypes.object
+    bgColor: PropTypes.string.isRequired,
+    style: PropTypes.object,
+    type: PropTypes.oneOf(['submit','button','reset']).isRequired
+}
+
+Button.defaultProps= {
+    bgColor: 'lime',
+    type: 'button'
 }
 
 export default Button;
