@@ -2,7 +2,17 @@ import React from 'react'
 import styles from './Button.module.css'
 import PropTypes from 'prop-types'
 
-const Button = (props) => {
+interface I_ButtonProps {
+
+    onButtonClick: Function
+    style?: object
+    bgColor?: string
+    children: string|React.ReactNode|Array<string|React.ReactNode>
+    type?: 'button'|'submit'|'reset' 
+
+}
+
+const Button: React.FC<I_ButtonProps> = (props) => {
     console.log(props)
     return (
         <button 
@@ -23,7 +33,7 @@ Button.propTypes={
     onButtonClick: PropTypes.func.isRequired,
     bgColor: PropTypes.string.isRequired,
     style: PropTypes.object,
-    type: PropTypes.oneOf(['submit','button','reset']).isRequired
+    type: PropTypes.oneOf(['button','submit','reset'])
 }
 
 Button.defaultProps= {
