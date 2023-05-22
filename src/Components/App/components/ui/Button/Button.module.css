@@ -12,7 +12,7 @@
 .Button:hover  {
 
     background-color: #007;
-    box-shadow: 5px 2px 5px rgba(0,0,0,.3) inset;
+    box-shadow: 5px 2px 5px rgba(0,0,0,.3);
     cursor: pointer;
 }
 
@@ -20,4 +20,8 @@
 .Button > img {
     max-height: 1em;
     padding-right: 1em;
+}
+
+.clicked {
+    box-shadow: 5px 2px 5px rgba(0,0,0,.3) inset !important;
 }

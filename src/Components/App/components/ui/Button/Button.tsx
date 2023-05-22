@@ -13,7 +13,7 @@ interface I_ButtonProps {
 }
 
 const Button: React.FC<I_ButtonProps> = (props) => {
-    console.log(props)
+    
     return (
         <button 
             className={ styles.Button } 
@@ -40,5 +40,7 @@ Button.defaultProps= {
     bgColor: 'lime',
     type: 'button'
 }
+
+
 
 export default Button;
