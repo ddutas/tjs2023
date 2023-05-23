@@ -19,6 +19,7 @@ const Button: React.FC<I_ButtonProps> = (props) => {
         {
             setTimeout(() => {
                 setIsClicked(false)
+                console.timeEnd('click')
             },200)
         }
     }, [isClicked])
@@ -28,7 +29,7 @@ const Button: React.FC<I_ButtonProps> = (props) => {
             className={ !isClicked ? styles.Button:styles.Button + ' ' + styles.clicked } 
             onClick={ (evt) => { 
                 setIsClicked(true)
-                
+                console.time('click')
                 props.onButtonClick('hello')
             }}
             style={{...props.style, backgroundColor: props.bgColor}}

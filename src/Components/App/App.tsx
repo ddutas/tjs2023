@@ -17,10 +17,10 @@ function App() {
       Valeur du compteur: { counter }
       <hr />
       <Button onButtonClick={(untruc: string) => { setcounter(counter - 1); console.log('Valeur In-line : ' + counter)}} bgColor="#FAA">
-        -1
+        - Remove 1
       </Button>
       <Button onButtonClick={(ok: string) => { setcounter(counter + 1); console.log('Valeur In-line : '+ counter)}} type="reset">
-        +1
+        + Add 1
       </Button>
     </div>
   );
