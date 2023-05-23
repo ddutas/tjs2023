@@ -28,8 +28,14 @@ const MemeForm = (props) => {
                 props.onMemeChange({...props.meme,titre: event.target.value});
               }}/>
               <BS.Form.Label>Image</BS.Form.Label>
-              <BS.Form.Select name="image" id="image">
+              <BS.Form.Select name="image" id="image" onChange={(event) => {
+                props.onMemeChange({...props.meme,imageId: Number(event.target.value)});
+
+              }}>
                 <option value="-1">No-image</option>
+                {
+                  props.images.map((img,i) => <option key={`select-img-${i}`} value={img.id}>{ img.titre }</option> )
+                }
               </BS.Form.Select>
             </BS.Col>
           </BS.Row>
