@@ -11,9 +11,17 @@ import * as BS from 'react-bootstrap';
 
 function App() {
 
+  const dbUrl = 'http://localhost:5679/images';
+
   const [meme, setMeme] = useState(emptyMeme);
-  const dbUrl = 'http://localhost:5679';
+  const [imgs,setImgs] = useState([]);
   
+  useEffect(() => {
+    fetch(dbUrl)
+      .then(r => r.json())
+      .then(arr => setImgs(arr))
+  },[]);
+
   return (
     <div className='App'>
       <BS.Container fluid>
@@ -30,8 +38,8 @@ function App() {
             <FlexH3Grow>
               <Navbar/>
               <FlexW1Grow>
-                <MemeSVGViewer meme={meme} image={undefined}></MemeSVGViewer>
-                <MemeForm meme={meme} onMemeChange={(meme) => {
+                <MemeSVGViewer meme={meme} image={imgs.find((img)=>img.id === meme.imageId)} basePath='' />
+                <MemeForm meme={meme} images={imgs} onMemeChange={(meme) => {
                     setMeme(meme)
                 }}/>
               </FlexW1Grow>

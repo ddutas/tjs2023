@@ -132,7 +132,8 @@ MemeForm.propTypes = {
     frameSizeX: PropTypes.number.isRequired,
     frameSizeY: PropTypes.number.isRequired
   }).isRequired,
-  onMemeChange: PropTypes.func.isRequired
+  onMemeChange: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired
 };
 
 MemeForm.defaultProps = {};
