@@ -5,21 +5,32 @@ import Header from './components/ui/Header/Header';
 import Navbar from './components/ui/Navbar/Navbar';
 import FlexW1Grow from './components/layout/FlexW1Grow/FlexW1Grow';
 import Footer from './components/ui/Footer/Footer';
-import { MemeSVGViewer, emptyMeme } from 'orsys-tjs-meme';
+import { MemeSVGViewer, MemeSVGThumbnail, emptyMeme } from 'orsys-tjs-meme';
 import MemeForm from './components/functionnal/MemeForm/MemeForm';
 import * as BS from 'react-bootstrap';
 
 function App() {
 
-  const dbUrl = 'http://localhost:5679/images';
+  const dbUrl = 'http://localhost:5679';
 
   const [meme, setMeme] = useState(emptyMeme);
+  const [memes, setMemes] = useState([]);
   const [imgs,setImgs] = useState([]);
   
   useEffect(() => {
-    fetch(dbUrl)
+    const im = fetch(dbUrl + '/images')
       .then(r => r.json())
-      .then(arr => setImgs(arr))
+      // .then(arr => setImgs(arr));
+
+    const me = fetch(dbUrl + '/memes')
+      .then(r => r.json())
+    
+      Promise.all([im,me])
+        .then((values) => {
+          setMemes(values[1])
+          setImgs(values[0])
+        });
+    
   },[]);
 
   return (
@@ -37,12 +48,13 @@ function App() {
           <BS.Col>
             <FlexH3Grow>
               <Navbar/>
-              <FlexW1Grow>
+              <MemeSVGThumbnail memes={memes} images={imgs} basePath=''/>
+              {/* <FlexW1Grow>
                 <MemeSVGViewer meme={meme} image={imgs.find((img)=>img.id === meme.imageId)} basePath='' />
                 <MemeForm meme={meme} images={imgs} onMemeChange={(meme) => {
                     setMeme(meme)
                 }}/>
-              </FlexW1Grow>
+              </FlexW1Grow> */}
               
             </FlexH3Grow>
           </BS.Col>
