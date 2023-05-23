@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './Navbar.module.css';
 import Container from 'react-bootstrap/Container';
 import * as BS from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const initialState= {}
@@ -28,8 +30,16 @@ const Navbar = (props) => {
           <BS.Navbar.Toggle aria-controls="basic-navbar-nav" />
           <BS.Navbar.Collapse id="basic-navbar-nav">
             <BS.Nav className="me-auto">
-              <BS.Nav.Link href="#home">Home</BS.Nav.Link>
-              <BS.Nav.Link href="#link">Link</BS.Nav.Link>
+              <LinkContainer to="/thumbnail">
+                <BS.Nav.Link href="#">Thumbnail</BS.Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/meme">
+                <BS.Nav.Link href="#">Meme</BS.Nav.Link>
+              </LinkContainer>
+              {/* <LinkContainer to="/meme/1">
+                <BS.Nav.Link href="#">Meme/1</BS.Nav.Link>
+              </LinkContainer> */}
+              {/* <BS.Nav.Link href="#link">Link</BS.Nav.Link>
               <BS.NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <BS.NavDropdown.Item href="#action/3.1">Action</BS.NavDropdown.Item>
                 <BS.NavDropdown.Item href="#action/3.2">
@@ -40,7 +50,7 @@ const Navbar = (props) => {
                 <BS.NavDropdown.Item href="#action/3.4">
                   Separated link
                 </BS.NavDropdown.Item>
-              </BS.NavDropdown>
+              </BS.NavDropdown> */}
             </BS.Nav>
           </BS.Navbar.Collapse>
         </BS.Container>

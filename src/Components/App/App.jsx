@@ -8,6 +8,7 @@ import Footer from './components/ui/Footer/Footer';
 import { MemeSVGViewer, MemeSVGThumbnail, emptyMeme } from 'orsys-tjs-meme';
 import MemeForm from './components/functionnal/MemeForm/MemeForm';
 import * as BS from 'react-bootstrap';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -48,13 +49,20 @@ function App() {
           <BS.Col>
             <FlexH3Grow>
               <Navbar/>
-              <MemeSVGThumbnail memes={memes} images={imgs} basePath=''/>
-              {/* <FlexW1Grow>
-                <MemeSVGViewer meme={meme} image={imgs.find((img)=>img.id === meme.imageId)} basePath='' />
-                <MemeForm meme={meme} images={imgs} onMemeChange={(meme) => {
-                    setMeme(meme)
-                }}/>
-              </FlexW1Grow> */}
+              <FlexW1Grow>
+                <Routes>
+                  <Route path="/thumbnail" element={ <MemeSVGThumbnail memes={memes} images={imgs} basePath=''/> } />
+                  <Route path="/meme" element={ 
+                    <>
+                      <MemeSVGViewer meme={meme} image={imgs.find((img)=>img.id === meme.imageId)} basePath='' />
+                      <MemeForm meme={meme} images={imgs} onMemeChange={(meme) => {
+                        setMeme(meme)
+                        }}/> 
+                    </>
+                  }/>
+                </Routes>
+                
+              </FlexW1Grow>
               
             </FlexH3Grow>
           </BS.Col>
