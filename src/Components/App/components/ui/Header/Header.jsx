@@ -19,7 +19,7 @@ const Header = (props) => {
 
   return (
     <div className={styles.Header} data-testid="Header">
-      header Component
+      { props.children }
     </div>
   )
 };

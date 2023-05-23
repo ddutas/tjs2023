@@ -1,1 +1,14 @@
-.Header {}
+.Header {
+    background-color: #191919;
+    color: white;
+    padding: 1em;
+    text-align: left;
+    font-size: x-large;
+    text-shadow: 5px 5px 5px rgb(33, 37, 41);
+    text-transform: uppercase;
+}
+
+.Header > img {
+    height: 1em;
+    margin-right: 1em;
+}
