@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './MemeForm.module.css';
 import * as BS from 'react-bootstrap';
 
-const initialState= {}
 /**
  * memeForm component
  * 
@@ -14,9 +13,17 @@ const MemeForm = (props) => {
 
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
-        <BS.Form onSubmit={(event) => {
+        <BS.Form 
+          onSubmit={(event) => {
             event.preventDefault();
-          }}>
+            props.onSave(props.meme);
+          }}
+          onClear={(event) => {
+            (event).preventDefault();
+            props.onClear(props.meme)
+          }}
+        >
+
           <BS.Row>
             <BS.Col>
               <BS.Form.Label htmlFor="titre">Title</BS.Form.Label>
@@ -108,8 +115,8 @@ const MemeForm = (props) => {
           <BS.Row>
             <BS.Col>
               <BS.ButtonGroup>
-                <BS.Button type="submit" variant="primary" onClick={(event) => { props.onSave(props.meme) }}>Submit</BS.Button>
-                <BS.Button type="reset" variant="danger" onClick={(event) => { props.onClear(props.meme)}}>Reset</BS.Button>
+                <BS.Button type="submit" variant="primary">Submit</BS.Button>
+                <BS.Button type="reset" variant="danger">Reset</BS.Button>
               </BS.ButtonGroup>
             </BS.Col>
           </BS.Row>
