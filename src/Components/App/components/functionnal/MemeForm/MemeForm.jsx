@@ -2,6 +2,7 @@ import React , { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import styles from './MemeForm.module.css';
 import * as BS from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * memeForm component
@@ -10,13 +11,14 @@ import * as BS from 'react-bootstrap';
  * @returns React.Component Template render
  */
 const MemeForm = (props) => {
-
+  const navigate = useNavigate();
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
         <BS.Form 
           onSubmit={(event) => {
             event.preventDefault();
             props.onSave(props.meme);
+            navigate('/thumbnail')
           }}
           onClear={(event) => {
             (event).preventDefault();
