@@ -5,13 +5,11 @@ import Header from './components/ui/Header/Header';
 import Navbar from './components/ui/Navbar/Navbar';
 import FlexW1Grow from './components/layout/FlexW1Grow/FlexW1Grow';
 import Footer from './components/ui/Footer/Footer';
-import { MemeSVGViewer, MemeSVGThumbnail, emptyMeme } from 'orsys-tjs-meme';
-import MemeForm from './components/functionnal/MemeForm/MemeForm';
 import * as BS from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
-import { store } from './store/store';
 import MemeThunbnail from './pages/MemeThunbnail.jsx/MemeThunbnail';
 import MemeEditor from './pages/MemeEditor/MemeEditor';
+import PdfThumbnail from './pages/PdfThumbnail/pdfThumbnail';
 
 function App() {
   
@@ -37,6 +35,9 @@ function App() {
                   } />
                   <Route path="/meme" element={ 
                     <MemeEditor/>
+                  }/>
+                  <Route path="/pdf" element={ 
+                    <PdfThumbnail/>
                   }/>
                 </Routes>
                 

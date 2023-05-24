@@ -36,6 +36,9 @@ const Navbar = (props) => {
               <LinkContainer to="/meme">
                 <BS.Nav.Link href="#">Meme</BS.Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/pdf">
+                <BS.Nav.Link href="#">Pdf</BS.Nav.Link>
+              </LinkContainer>
               {/* <LinkContainer to="/meme/1">
                 <BS.Nav.Link href="#">Meme/1</BS.Nav.Link>
               </LinkContainer> */}
