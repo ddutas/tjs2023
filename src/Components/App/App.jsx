@@ -11,10 +11,9 @@ import * as BS from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import { store } from './store/store';
 import MemeThunbnail from './pages/MemeThunbnail.jsx/MemeThunbnail';
+import MemeEditor from './pages/MemeEditor/MemeEditor';
 
 function App() {
-
-  const [meme, setMeme] = useState(emptyMeme);
   
   return (
     <div className='App'>
@@ -37,12 +36,7 @@ function App() {
                     <MemeThunbnail/>
                   } />
                   <Route path="/meme" element={ 
-                    <>
-                      <MemeSVGViewer meme={meme} image={store.getState().listes.images.find((img)=>img.id === meme.imageId)} basePath='' />
-                      <MemeForm meme={meme} images={store.getState().listes.images} onMemeChange={(meme) => {
-                          setMeme(meme)
-                      }}/> 
-                    </>
+                    <MemeEditor/>
                   }/>
                 </Routes>
                 

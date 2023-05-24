@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { MemeSVGThumbnail } from 'orsys-tjs-meme';
 import { useSelector } from 'react-redux';
 
@@ -11,10 +10,6 @@ const MemeThunbnail = props => {
     return (
         <MemeSVGThumbnail memes={memes} images={images} basePath=''/> 
     );
-};
-
-MemeThunbnail.propTypes = {
-    
 };
 
 export default MemeThunbnail;

@@ -66,6 +66,57 @@
       "color": "#000000",
       "frameSizeX": 0,
       "frameSizeY": 0
+    },
+    {
+      "name": "current",
+      "actions": {},
+      "caseReducers": {},
+      "id": 2
+    },
+    {
+      "titre": "",
+      "text": "Oui",
+      "x": 5,
+      "y": 17,
+      "fontWeight": "500",
+      "fontSize": 15,
+      "underline": true,
+      "italic": true,
+      "imageId": 2,
+      "color": "#ff0000",
+      "frameSizeX": 0,
+      "frameSizeY": 0,
+      "id": 3
+    },
+    {
+      "titre": "",
+      "text": "Phiphi",
+      "x": 30,
+      "y": 30,
+      "fontWeight": "500",
+      "fontSize": 30,
+      "underline": true,
+      "italic": true,
+      "imageId": 4,
+      "color": "#07e48f",
+      "frameSizeX": 0,
+      "frameSizeY": 0,
+      "id": 4
+    },
+    {
+      "titre": "",
+      "text": "Test 2",
+      "x": 0,
+      "y": 17,
+      "fontWeight": "500",
+      "fontSize": 30,
+      "underline": true,
+      "italic": true,
+      "imageId": 0,
+      "color": "#ff0000",
+      "frameSizeX": 0,
+      "frameSizeY": 0,
+      "id": 5
     }
   ]
 }

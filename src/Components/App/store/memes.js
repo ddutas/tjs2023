@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { emptyMeme } from 'orsys-tjs-meme';
+import { fetchSaveCurrent } from './current';
 
 const dbUrl = 'http://localhost:5679';
 
@@ -16,9 +18,12 @@ const memes = createSlice({
     },
     addImages: (state,action) => {
         state.images.push(...action.payload)
-    }, 
+    },
   },
   extraReducers: (builder)=>{
+    builder.addCase(fetchSaveCurrent.fulfilled,(state,action)=>{
+        state.memes.push(action.payload.meme)
+    })
     builder.addCase(fetchAllValues.fulfilled,(state,action) => {
         state.images.push(...action.payload.images)
         state.memes.push(...action.payload.memes)

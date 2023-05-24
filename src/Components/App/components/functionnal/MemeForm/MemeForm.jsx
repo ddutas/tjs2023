@@ -12,10 +12,6 @@ const initialState= {}
  */
 const MemeForm = (props) => {
 
-  useEffect(() => {
-    console.log('MemeForm mounted')
-  },[]);
-
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
         <BS.Form onSubmit={(event) => {
@@ -112,8 +108,8 @@ const MemeForm = (props) => {
           <BS.Row>
             <BS.Col>
               <BS.ButtonGroup>
-                <BS.Button type="submit" variant="primary">Submit</BS.Button>
-                <BS.Button type="reset" variant="danger">Reset</BS.Button>
+                <BS.Button type="submit" variant="primary" onClick={(event) => { props.onSave(props.meme) }}>Submit</BS.Button>
+                <BS.Button type="reset" variant="danger" onClick={(event) => { props.onClear(props.meme)}}>Reset</BS.Button>
               </BS.ButtonGroup>
             </BS.Col>
           </BS.Row>
@@ -139,6 +135,8 @@ MemeForm.propTypes = {
     frameSizeY: PropTypes.number.isRequired
   }).isRequired,
   onMemeChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired
 };
 
