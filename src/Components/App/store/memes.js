@@ -22,7 +22,17 @@ const memes = createSlice({
   },
   extraReducers: (builder)=>{
     builder.addCase(fetchSaveCurrent.fulfilled,(state,action)=>{
-        state.memes.push(action.payload.meme)
+        const pos = state.memes.findIndex(meme => meme.id === action.payload.id)
+        if(pos >= 0)
+        {
+          // Modification
+          state.memes[pos] = action.payload
+        }
+        else
+        {
+          // Ajout
+          state.memes.push(action.payload)
+        }
     })
     builder.addCase(fetchAllValues.fulfilled,(state,action) => {
         state.images.push(...action.payload.images)
