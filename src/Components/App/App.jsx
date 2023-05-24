@@ -9,38 +9,20 @@ import { MemeSVGViewer, MemeSVGThumbnail, emptyMeme } from 'orsys-tjs-meme';
 import MemeForm from './components/functionnal/MemeForm/MemeForm';
 import * as BS from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import { store } from './store/store';
+import MemeThunbnail from './pages/MemeThunbnail.jsx/MemeThunbnail';
 
 function App() {
 
-  const dbUrl = 'http://localhost:5679';
-
   const [meme, setMeme] = useState(emptyMeme);
-  const [memes, setMemes] = useState([]);
-  const [imgs,setImgs] = useState([]);
   
-  useEffect(() => {
-    const im = fetch(dbUrl + '/images')
-      .then(r => r.json())
-      // .then(arr => setImgs(arr));
-
-    const me = fetch(dbUrl + '/memes')
-      .then(r => r.json())
-    
-      Promise.all([im,me])
-        .then((values) => {
-          setMemes(values[1])
-          setImgs(values[0])
-        });
-    
-  },[]);
-
   return (
     <div className='App'>
       <BS.Container fluid>
         <BS.Row>
           <BS.Col>
             <Header>
-              <img src="https://gitlab.imperiumclan.fr/uploads/-/system/appearance/logo/1/logo270.png"/> 
+              <img src="https://gitlab.imperiumclan.fr/uploads/-/system/appearance/logo/1/logo270.png" alt=''/> 
               Imperium Clan
             </Header>
           </BS.Col>
@@ -51,13 +33,15 @@ function App() {
               <Navbar/>
               <FlexW1Grow>
                 <Routes>
-                  <Route path="/thumbnail" element={ <MemeSVGThumbnail memes={memes} images={imgs} basePath=''/> } />
+                  <Route path="/thumbnail" element={ 
+                    <MemeThunbnail/>
+                  } />
                   <Route path="/meme" element={ 
                     <>
-                      <MemeSVGViewer meme={meme} image={imgs.find((img)=>img.id === meme.imageId)} basePath='' />
-                      <MemeForm meme={meme} images={imgs} onMemeChange={(meme) => {
-                        setMeme(meme)
-                        }}/> 
+                      <MemeSVGViewer meme={meme} image={store.getState().listes.images.find((img)=>img.id === meme.imageId)} basePath='' />
+                      <MemeForm meme={meme} images={store.getState().listes.images} onMemeChange={(meme) => {
+                          setMeme(meme)
+                      }}/> 
                     </>
                   }/>
                 </Routes>

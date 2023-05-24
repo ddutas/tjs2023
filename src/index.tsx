@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Components/App/App';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { store } from './Components/App/store/store';
+import { Provider } from 'react-redux';
 
 // import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
-      <App/>
+      <Provider store={store}>
+        <App/>
+      </Provider>
     </Router>
   </React.StrictMode>
 );
